@@ -23,19 +23,8 @@ alias fuck='sudo $(history -p \!\!)'
 alias pfind='ps aux | grep'
 alias gnupath='source $HOME/gnupath.sh'
 
-alias fcpush='fleetctl submit'
-alias fcstart='fleetctl start'
-alias fcload='fleetctl load'
-alias fcstop='fleetctl stop'
-alias fcdestroy='fleetctl destroy'
-alias fcunload='fleetctl unload'
-alias fcstatus='fleetctl status'
-alias fclm='fleetctl list-machines'
-alias fclu='fleetctl list-units'
-alias fcluf='fleetctl list-unit-files'
-alias fcsel='/Users/dmitry/.fleet/select_tunnel.sh'
-
-alias kubectl='$HOME/work/kubernetes/cluster/kubectl.sh'
+alias curl='curl -w "\n"'
+alias jsonprint='python -m json.tool'
 
 # usage `pdftopngs file.pdf`
 alias pdftopngs='gs -dBATCH -dNOPAUSE -sDEVICE=png16m -dGraphicsAlphaBits=4 -dTextAlphaBits=4 -r150 -sOutputFile=output%d.png'
@@ -48,5 +37,8 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 export PS1='\h:\W \u <$?> \$ '
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export DOCKER_HOST=tcp://buildserver.local:2376 DOCKER_TLS_VERIFY=1
 
 . /usr/local/etc/bash_completion
