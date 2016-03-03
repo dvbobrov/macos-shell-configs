@@ -29,6 +29,8 @@ alias jsonprint='python -m json.tool'
 # usage `pdftopngs file.pdf`
 alias pdftopngs='gs -dBATCH -dNOPAUSE -sDEVICE=png16m -dGraphicsAlphaBits=4 -dTextAlphaBits=4 -r150 -sOutputFile=output%d.png'
 
+alias flushdns='sudo killall -HUP mDNSResponder'
+
 # MacPorts Installer addition on 2015-08-13_at_17:46:38: adding an appropriate PATH variable for use with MacPorts.
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.

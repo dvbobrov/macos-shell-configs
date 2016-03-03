@@ -27,8 +27,6 @@ set ruler
 set relativenumber
 set mouse=a
 
-set undofile
-
 nnoremap / /\v
 vnoremap / /\v
 set ignorecase
