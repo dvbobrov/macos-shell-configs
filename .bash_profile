@@ -17,8 +17,10 @@ alias gch="git checkout"
 # General aliases
 alias ..="cd .."
 alias ...="cd ../.."
-alias la="ls -al"
-alias sl="ls"
+alias ls='ls -GFh'
+alias la="ls -GFalh"
+alias l='ls -GFh'
+alias sl="ls -GFh"
 alias fuck='sudo $(history -p \!\!)'
 alias pfind='ps aux | grep'
 alias gnupath='source $HOME/gnupath.sh'
@@ -38,9 +40,17 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
-export PS1='\h:\W \u <$?> \$ '
+export GIT_PS1_SHOWDIRTYSTATE=true
+export GIT_PS1_SHOWUNTRACKEDFILES=true
+
+export PS1='\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\] <$(ec=$?; if [[ $ec = 0 ]]; then printf %s "\[\033[32m\]0\[\033[m\]"; else printf %s "\[\033[31m\]$ec\[\033[m\]"; fi)>$(__git_ps1 " (%s)") \n\$ '
+
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export DOCKER_HOST=tcp://buildserver.local:2376 DOCKER_TLS_VERIFY=1
 
 . /usr/local/etc/bash_completion
+
+if ! declare -F __git_ps1 &> /dev/null; then
+    alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*#\)/(\1)/'"
+fi
