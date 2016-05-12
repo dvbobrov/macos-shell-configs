@@ -32,6 +32,22 @@ alias jsonprint='python -m json.tool'
 alias pdftopngs='gs -dBATCH -dNOPAUSE -sDEVICE=png16m -dGraphicsAlphaBits=4 -dTextAlphaBits=4 -r150 -sOutputFile=output%d.png'
 
 alias flushdns='sudo killall -HUP mDNSResponder'
+alias gradle_debug='export GRADLE_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005'
+alias gradle_nodebug='export GRADLE_OPTS='
+
+# AWS
+
+function awsreg() {
+    if [[ -z "$1" ]]; then
+        echo "usage 'awsreg region-name'"
+    else
+        export AWS_DEFAULT_REGION="$1"
+    fi
+}
+
+function awsec2find() {
+    aws ec2 describe-instances --filters "Name=tag-value,Values=$1"
+}
 
 # MacPorts Installer addition on 2015-08-13_at_17:46:38: adding an appropriate PATH variable for use with MacPorts.
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"

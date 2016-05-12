@@ -1,3 +1,4 @@
+execute pathogen#infect()
 " Tab autocompletion
 function InsertTabWrapper()
     let col = col('.') - 1
